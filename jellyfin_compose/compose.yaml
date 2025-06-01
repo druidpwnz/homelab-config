@@ -1,0 +1,17 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    network_mode: 'host'
+    volumes:
+      - /media/hdd/Video/jellyfinconfig:/config
+      - /media/hdd/Video/jellyfincache:/cache
+      - type: bind
+        source: /media/hdd/Video 
+        target: /video
+      - type: bind
+        source: /media/hdd/Music
+        target: /music
+        read_only: false
+    restart: 'unless-stopped'
+
